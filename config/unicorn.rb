@@ -4,9 +4,10 @@
 #
 
 worker_processes 2
-working_directory "/var/www/rails_base"
-listen "tmp/sockets/unicorn.sock"
-pidfile = "tmp/pids/unicorn.pid"
+working_directory =  File.dirname(File.dirname(File.absolute_path __FILE__))
+working_directory(working_directory)
+listen "#{working_directory}/tmp/sockets/unicorn.sock"
+pidfile = "#{working_directory}/tmp/pids/unicorn.pid"
 pid pidfile
 
 timeout 60
